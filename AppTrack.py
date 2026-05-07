@@ -9,5 +9,4 @@ tracker = initialize_tracker()
 
 if __name__ == "__main__":
     general_updates()
-    alerts_ui()
     main_menu(tracker)

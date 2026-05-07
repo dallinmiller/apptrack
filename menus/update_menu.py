@@ -20,7 +20,7 @@ def update_menu(tracker):
             interview_date = input(f"Input Interview Date (YYYY-MM-DD or YYYYMMDD): ")
             if parse_date(interview_date):
                 break
-        update_value(ID, "Next Alert", "Three Days Until Interview")
-        update_value(ID, "Next Alert Date", (date.fromisoformat(interview_date) - timedelta(days=3)))
+        update_value(ID, "Current Alert", None)
+        update_value(ID, "Status Date", interview_date)
         update_value(ID, "Alert Seen", "False")
         update_value(ID, "Interview", "True")

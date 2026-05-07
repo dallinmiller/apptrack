@@ -1,7 +1,7 @@
 from datetime import date, timedelta
 
 # Company, Position, Location, Date Applied, Status, Notes
-# Status: Applied, Rejected, Interview, Awaiting Response, Accepted, Inactive
+# Status: Applied, Rejected, Interview, Awaiting Response, Accepted, Inactive, Deadline
 
 class Tracker:
     def __init__(self, starting_ID=0):
@@ -24,10 +24,10 @@ class Application:
         self.location = f"{city}, {state}"
         self.date_applied = (date.today().isoformat() if date_applied is None else date_applied)
         self.status = status
+        self.status_date = self.date_applied
         self.notes = notes
 
-        self.next_alert = "One Week Since Applied"
-        self.next_alert_date = (date.fromisoformat(self.date_applied) + timedelta(weeks=1)).isoformat()
+        self.current_alert = None
         self.alert_seen = False
 
         self.interview = False
@@ -39,9 +39,9 @@ class Application:
             "Location": self.location,
             "Date Applied": self.date_applied,
             "Status": self.status,
+            "Status Date": self.status_date,
             "Notes": self.notes,
-            "Next Alert": self.next_alert,
-            "Next Alert Date": self.next_alert_date,
+            "Current Alert": self.current_alert,
             "Alert Seen": self.alert_seen,
             "Interview": self.interview
         }

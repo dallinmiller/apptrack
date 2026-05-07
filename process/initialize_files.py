@@ -9,9 +9,9 @@ FIELDS = [
     "Location",
     "Date Applied",
     "Status",
+    "Status Date",
     "Notes",
-    "Next Alert",
-    "Next Alert Date",
+    "Current Alert",
     "Alert Seen",
     "Interview"
 ]
