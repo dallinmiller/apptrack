@@ -19,9 +19,6 @@ AppTrack is a program that stores, creates alerts, and analyzes data for a user 
 - data_files/ - data storage
 
 ## Future Improvements
-- Update notification system
-  - Current system requires the application open once per day, bugs when days are missed
-  - Alerts does not need its own directory, should integrate with process and menus
 - Option to password protect, encrypt data, application data could be sensitive
 - Update input design
   - Increase options for data input, improving options for more relevant statistics
