@@ -23,3 +23,15 @@ def load_application(filename="applications.csv"):
 
     return apps
 
+def load_application_by_id(app_id, filename="applications.csv"):
+
+    filepath = get_filepath(filename)
+
+    with open(filepath, "r") as file:
+        reader = csv.DictReader(file)
+
+        for row in reader:
+            if row["ID"] == str(app_id):
+                return row
+
+    return None

@@ -1,6 +1,6 @@
 from datetime import date
 from process.update_edit import update_value
-from process.save_load import load_application
+from process.save_load import load_application, load_application_by_id
 from alerts.alerts_ui import alerts_ui
 
 ### Alerts are defined by the status of an application. The object all_alerts holds every alert, divided by application
@@ -67,11 +67,10 @@ def status_update(app, alert_index, alert_time, potential_alert):
     elif app["Status"] == "Interview" and alert_time >= 0:
         update_value(app["ID"], "Status", "Awaiting Response")
 
-
 ### Creates a list of alerts, and makes necessary updates.
 def general_updates():
     apps = load_application()
-    alert_list = []
+    alert_list = [[], [], [], []]
 
     alert_status = {
         "Applied": 0,
@@ -93,15 +92,15 @@ def general_updates():
         try:
             potential_alert = all_alerts[alert_index][alert_time]
         except (KeyError, IndexError):
-            if alert_time < 0:
+            if alert_time is None or alert_time < 0:
                 potential_alert = app["Current Alert"]
             else:
                 potential_alert = all_alerts[alert_index]["Inactive"]
 
         if potential_alert != app["Current Alert"]:
-            alert_list.append([app, potential_alert])
             status_update(app, alert_index, alert_time, potential_alert)
-            update_value(app["ID"], "Current Alert", potential_alert)
             update_value(app["ID"], "Alert Seen", "False")
+            update_value(app["ID"], "Current Alert", potential_alert)
+            alert_list[alert_index].append(load_application_by_id(app["ID"]))
 
     alerts_ui(alert_list)
