@@ -1,10 +1,13 @@
 from menus.menu_creator import get_int, create_menu
 from process.update_edit import update_value
 from menus.add_application import parse_date
+from menus.view_applications import view_application
 
 def update_menu(tracker):
 
     ID = get_int("ID #: ", 1, max_value=tracker.ID_tracker)
+
+    view_application(ID)
 
     prompt = "Choose New Status: "
     options = ["Not Applied", "Applied", "Interview", "Offer", "Accepted", "Update Requested", "Feedback Requested",
