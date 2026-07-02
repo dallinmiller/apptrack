@@ -21,10 +21,10 @@ def statistics():
             active_interviews += 1
         elif app["Status"] == "Awaiting Response":
             responded_applications += 1
-        elif app["Status"] == "Accepted":
+        elif app["Status"] == "Accepted" or app["Status"] == "Offer":
             responded_applications += 1
             offers += 1
-        elif app["Status"] == "Inactive":
+        elif app["Status"] == "Inactive" or app["Status"] == "Update Requested":
             inactive_applications += 1
         if app["Interview"] == "True":
             total_interviews += 1
