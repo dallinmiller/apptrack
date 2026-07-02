@@ -13,7 +13,8 @@ def statistics():
 
     for app in apps:
         total_applications += 1
-        if app["Status"] == "Rejected":
+        if app["Status"] == "Rejected" or app["Status"] == "Feedback Requested":
+            responded_applications += 1
             rejected_applications += 1
         elif app["Status"] == "Interview":
             responded_applications += 1
